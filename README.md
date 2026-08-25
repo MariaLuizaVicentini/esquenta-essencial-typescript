@@ -1,43 +1,117 @@
-# Esquenta Essencial - Formação DEV
+# Esquenta Essencial - TypesScript
 
-Bem-vindo ao repositório oficial da série de vídeos **Esquenta Essencial**! Esta série tem como objetivo abordar as 10 principais tecnologias chave para o desenvolvimento de uma aplicação fullstack moderna utilizando tecnologias da Web. Cada pasta neste repositório contém os códigos desenvolvidos durante os vídeos.
+TypeScript é um superset do JavaScript.
+Nenhum servidor ou navegador processa TypeScript diretamente.
+Portanto, o TypeScript precisa ser compilado/convertido para JavaScript.
+JavaScript é uma linguagem que pode ser processada tanto pelo navegador quanto pelo servidor, por exemplo, utilizando Node.js.
 
-## Tecnologias abordadas na série:
+O JS:
+O JavaScript possui tipagem dinâmica.
+Isso significa que os tipos de uma determinada variável ou propriedade podem mudar durante a execução:
+```js
+let valor = 'texto';
 
-1. **HTML**
-2. **CSS**
-3. **JavaScript**
-4. **TypeScript**
-5. **React**
-6. **Next.js**
-7. **Tailwind CSS**
-8. **React Native**
-9. **Nest.js**
-10. **Banco de Dados**
+valor = 10;
 
-## Links para os vídeos da série no YouTube:
+console.log(valor)
+```
+- Nesse exemplo, a mesma variável recebeu primeiro uma string e depois um number.
 
-1. [O Essencial de HTML](https://www.youtube.com/watch?v=BRd8_yFzQiA)
-2. [O Essencial de CSS](https://www.youtube.com/watch?v=QxWxhjH98R0)
-3. [O Essencial de JavaScript](https://www.youtube.com/watch?v=oYhNLfh7oto)
-4. [O Essencial de TypeScript](https://www.youtube.com/watch?v=X2MV17E9nxE)
-5. [O Essencial de React](https://www.youtube.com/watch?v=tYjYfWG8L3o)
-6. [O Essencial de Next.js](https://www.youtube.com/watch?v=BSrmGMC1-is)
-7. [O Essencial de Tailwind CSS](https://www.youtube.com/watch?v=link_video_7)
-8. [O Essencial de React Native](https://www.youtube.com/watch?v=link_video_8)
-9. [O Essencial de Nest.js](https://www.youtube.com/watch?v=link_video_9)
-10. [O Essencial de Banco de Dados](https://www.youtube.com/watch?v=link_video_10)
+O TS:
+O TypeScript possui tipagem estática.
+Isso significa que os tipos são verificados durante a compilação, antes da execução do código.
+```ts
+let valor: string = 'texto';
+
+valor = 10;
+
+console.log(valor) // Erro de tipo
+```
+- O responsável por realizar a compilação do TypeScript para JavaScript é o TypeScript Compiler, conhecido como TSC.
+
+# Instalando o TypeScript
+Podemos utilizar o NPM para instalar o TypeScript como uma dependência de desenvolvimento do projeto:
+```bash
+npm install typescript --save-dev
+```
+Mesmo em um projeto que não utiliza nenhum framework, podemos utilizar o TypeScript normalmente.
+
+Esse comando instala o compilador TypeScript (tsc) localmente no projeto.
+
+# Inicializando o Typescript
+
+Depois de instalar o TypeScript, podemos criar o arquivo de configuração tsconfig.json com:
+```bash
+npx tsc --init
+```
+Esse comando crio o arquivo:
+```json
+tsconfig.json
+```
+- O tsconfig.json é o arquivo de configuração do TSC. Ele define as regras utilizadas durante a compilação e como os arquivos TypeScript serão convertidos para JavaScript.
+
+# Configurações essenciais do tsconfig.json
+
+target
+- Define a versão do JavaScript para a qual o TypeScript será compilado.
+
+Exemplo:
+```json
+{
+    "target": "ES2020"
+}
+```
+- Nesse caso, o código TypeScript será convertido para JavaScript compatível com ES2020.
 
 ---
+module
+- Define qual sistema de módulos será utilizado no JavaScript gerado.
 
-### Como usar este repositório
+Exemplo:
+```json
+{
+  "module": "CommonJS"
+}
+```
+---
 
-Cada tecnologia abordada na série possui uma pasta específica com o código correspondente. Você pode clonar o repositório e seguir os tutoriais nos vídeos para praticar e acompanhar o desenvolvimento da aplicação fullstack.
+strict
+- Ativa um conjunto de verificações mais rigorosas de tipos durante a compilação.
 
+Exemplo:
+```json
+{
+  "strict": true
+}
+```
+- Isso ajuda o TypeScript a identificar possíveis problemas de tipagem durante o desenvolvimento.
+
+--
+outDir
+- Define onde os arquivos JavaScript gerados pela compilação serão armazenados.
+
+Exemplo:
+```json
+{
+  "outDir": "./dist"
+}
+```
+- Se o arquivo original estiver em:
 ```bash
-git clone https://github.com/seu-usuario/esquenta-essencial.git
+src/tipos/basico-01.ts
+```
+- o arquivo compilado poderá ser gerado em:
+```bash
+dist/tipos/basico-01.js
 ```
 
-Após clonar o repositório, acesse a pasta de interesse e siga as instruções fornecidas no vídeo correspondente.
-
-**Assista aos vídeos da série e se inscreva no canal para mais conteúdo de desenvolvimento web fullstack!**
+---
+rootDir
+- Define onde estão os arquivos-fonte TypeScript do projeto.
+Exemplo:
+```json
+{
+  "rootDir": "./src"
+}
+```
+- Nesse caso, o TypeScript considera a pasta src como a raiz dos arquivos-fonte.
