@@ -5,3 +5,7 @@ console.log(nome);
 console.log(numeros);
 
 export {};
+
+let nomeConst = 'Malu';
+
+// nomeConst = 2; 
