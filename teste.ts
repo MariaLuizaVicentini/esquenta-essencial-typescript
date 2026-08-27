@@ -1,41 +1,57 @@
 type Usuario = {
-    id: number;
     nome: string;
     idade: number;
 };
 
+type UsuarioComId = Usuario & {
+    id: number;
+};
 
-const db: any = []
+const db: UsuarioComId[] = [];
 
-function createUser (paylaod: Usuario) {
-    let data = paylaod;
-    if (!data) {
-        return 'ta vazia essa merda'
-    }
-    db.push(data)
-    return 'Usuario criado';
+function createUser(payload: Usuario) {
+    const data: UsuarioComId = {
+        ...payload,
+        id: db.length + 1
+    };
+
+    db.push(data);
+
+    return 'Sucesso: Usuario criado';
 }
 
-function listUsers (): string {
-    const users = JSON.stringify(db);
+
+function listUsers(): Usuario[] {
+    const users = db;
+    
     return users;
 }
 
-function editUsers (id: number) {
+function verificaSeUserExiste(id: number) {
     if (!id) {
-        return 'ta vazia essa merda'
+        return 'Erro: id Vazio';
     }
-    const findUser = db.find((user: any) => user.id == id);
+    
+    const findUser = db.find((user: UsuarioComId) => user.id === id);
+    
     if (!findUser) {
-        return 'nao tem esse usuario noia no db'
+        return 'Erro: esse id nao existe no banco de dados';
     }
-
-    // 
+    
     return findUser;
 }
 
-const user01 = createUser({ id: 1, nome: 'maluzeira', idade: 23});
-const user02 = createUser({ id: 2, nome: 'joao', idade: 28});
+function editUsers(payload: Usuario) {
+    let newUser = payload;
+    
+}
 
-const renameUser = editUsers(1);
-console.log(renameUser);
+
+let user01: string = createUser({nome: 'malu', idade: 23 })
+console.log ( user01)
+
+let listandoUsers: object = listUsers();
+console.log( listandoUsers)
+
+// let editandoUser = editUsers(1)
+// console.log(editandoUser)
