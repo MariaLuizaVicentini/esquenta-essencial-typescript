@@ -15,7 +15,7 @@ status = 'inativo';
 type Usuario = {
     nome: string,
     tel: string | null;
-};
+}; 
 
 const usuario_01: Usuario = {
     nome: 'Maluzeira',
