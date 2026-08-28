@@ -4,7 +4,7 @@ interface Usuario {
     senha: string;
 }
 
-interface UsuarioDb {
+interface UsuarioDb extends Usuario {
     id: number;
     ativo: boolean;
 }
@@ -21,3 +21,4 @@ let user01: Usuario = {
 }
 
 console.log(user01)
+
