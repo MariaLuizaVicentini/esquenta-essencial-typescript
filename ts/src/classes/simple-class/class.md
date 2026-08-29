@@ -1,3 +1,10 @@
+# classes simples em typescript
+
+Apesar do JS ser uma linguagem procedural, é possivel escrever codigo seguindo os paradigmas da programacao orientada a objeto. 
+
+Conseguimos definir as propriedades e metodos do objeto a partir de uma classe.
+
+```ts
 class Usuario {
     id: number;
     nome: string;
@@ -13,6 +20,11 @@ class Usuario {
         this.senha = senha;
     }
 }
+```
 
-const usuario: Usuario = new Usuario(1, 'João', 'joao@empresa.com.br', true);
+Pra instanciarmos o objeto:
+```ts
+const usuario: Usuario = new Usuario(1, 'malu', 'malu@dev.com.br', true);
 console.log(usuario);
+
+```
