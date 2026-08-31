@@ -1,5 +1,9 @@
 class Curso {
-    constructor(readonly id: number, public nome: string, public duracaoEmSegundos: number) {}
+    constructor(
+        readonly id: number,
+        public nome: string, 
+        public duracaoEmSegundos: number
+    ) {}
 
     duracaoEmHM(): string {
         const horas = Math.floor(this.duracaoEmSegundos / 3600);
